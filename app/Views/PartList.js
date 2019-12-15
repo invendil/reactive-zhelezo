@@ -9,29 +9,23 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { navigateTo } from '../Redux/actions';
+import PartItem from "../Component/PartItem";
 const backgroundImage = require('../img/bg_travel.jpeg');
 
-const Travel = ({ activeRoute, navigateTo }) => (
-    <ImageBackground
-      source={backgroundImage}
-      style={styles.container}
-      imageStyle={{ opacity: 0.3 }}
-    >
+const PartList = ({ activeRoute, navigateTo }) => (
+    
       <ScrollView contentContainerStyle={styles.view}>
-          <Text style={styles.header1}>{activeRoute.name}</Text>
-          <Text style={styles.text}>
-              Book your next trip by clicking the button below.
-          </Text>
-          <Button
-            title="Book your trip"
-            style={styles.button}
-            onPress={() => { navigateTo('Booking'); }}
+          <PartItem
+            imgUrl="//content2.onliner.by/catalog/device/header/8ff65cc441bd44a55d85aff8ccb5bf95.jpeg"
+            description="2 модуля, частота 3200 МГц, CL 16T, тайминги 16-18-18, напряжение 1.35 В"
+            name='HyperX Predator 2x8GB DDR4 PC4-25600 HX432C16PB3K2/16'
+            price={219.51}
           />
       </ScrollView>
-    </ImageBackground>
+  
 );
 
-Travel.propTypes = {
+PartList.propTypes = {
   activeRoute: PropTypes.shape({
     name: PropTypes.string.isRequired,
     screen: PropTypes.any.isRequired,
@@ -51,8 +45,9 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'flex-start',
         alignItems: 'center',
-        marginTop: 40,
-        padding: 20,
+        height: '100%',
+        marginTop: 10,
+        padding: 5,
     },
     header1: {
         fontSize: 28,
@@ -78,5 +73,5 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Travel);
+)(PartList);
 

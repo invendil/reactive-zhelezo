@@ -1,4 +1,4 @@
-import TravelScreen from '../Views/Travel';
+import PartListScreen from '../Views/PartList';
 import BookingScreen from '../Views/Booking';
 import AboutScreen from '../Views/About';
 import CreditsScreen from '../Views/Credits';
@@ -8,7 +8,7 @@ import CreditsScreen from '../Views/Credits';
   To omit the icon just pass null on its value.
 */
 export default [
-  {name: 'Travel', screen: TravelScreen, icon: 'airplane-takeoff'},
+  {name: 'PartList', screen: PartListScreen, icon: 'airplane-takeoff'},
   {name: 'Booking', screen: BookingScreen, icon: 'compass-outline'},
   {name: 'About', screen: AboutScreen, icon: 'information-outline'},
   {name: 'Credits', screen: CreditsScreen, icon: 'account-circle'},

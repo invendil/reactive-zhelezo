@@ -8,16 +8,21 @@ import {
 
 export default PartItem = ({ imgUrl, description, name, price }) => (
 
-  <View style={styles.view} >
-    <Image
-      style={{ width: "25%" }}
-      source={{ uri: `https:${imgUrl}` }}
-    />
-    <View style={{ flex: 2, "align": "center" }}>
-      <Text>{name}</Text>
-      {/*<Text>{description}</Text>*/}
+  <View style={styles.view}>
+    <View style={{ flex: 1, padding: 12 }}>
+      <Image
+        style={{ height: 100 }}
+        source={{ uri: `https:${imgUrl}` }}
+      />
     </View>
-    <Text style={{ flex: 0.5 }}>{price}</Text>
+    <View style={{ flex: 2 }}>
+      <Text>{name}</Text>
+      <Text>{description}</Text>
+    </View>
+    <View style={{ flex: 0.5 }}>
+      <Text style={{ "font-weight": "bolder", fontSize: 20 }}>Цена</Text>
+      <Text>{price}</Text>
+    </View>
   </View>
 );
 

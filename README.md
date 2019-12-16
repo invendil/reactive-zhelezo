@@ -21,7 +21,7 @@ This is the **Version 3.0** of the [original React Native Sidemenu Template](htt
 
 **If you are looking for a pure solution without Redux, checkout [this branch](https://github.com/darde/react-native-sidemenu/tree/version-3-without-redux).**
 
-![React Navigation with React Readux](./app/img/diagram.png)
+![React Navigation with React Readux](app/assets/images/diagram.png)
 Diagram: Simple integration of the React Navigation with React Redux.
 
 This project uses:
@@ -52,7 +52,7 @@ You can modify the menu items in the `app/Navigation/routes.js` file. You can al
 
 | Project Structure                               | Template animation |
 ------------------------------------------------------------------------
-|![Project structure](./app/img/project-structure.png) | ![](./app/img/react-native-sidemenu.gif)    |
+|![Project structure](app/assets/images/project-structure.png) | ![](app/assets/images/react-native-sidemenu.gif)    |
 
 ### License
 This project is licenced under the [MIT License][mit].

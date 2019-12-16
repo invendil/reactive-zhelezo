@@ -8,8 +8,11 @@ import CreditsScreen from '../Views/Credits';
   To omit the icon just pass null on its value.
 */
 export default [
-  {name: 'PartList', screen: PartListScreen, icon: 'airplane-takeoff'},
-  {name: 'Booking', screen: BookingScreen, icon: 'compass-outline'},
-  {name: 'About', screen: AboutScreen, icon: 'information-outline'},
-  {name: 'Credits', screen: CreditsScreen, icon: 'account-circle'},
+  {name: 'Жесткий диск', screen: PartListScreen, icon: require('../assets/images/parts/storage.png')},
+  {name: 'Оперативна память', screen: PartListScreen, icon: require('../assets/images/parts/main-memory.png')},
+  {name: 'Видео карта', screen: PartListScreen, icon: require('../assets/images/parts/video-card.png')},
+  {name: 'Процессор', screen: PartListScreen, icon: require('../assets/images/parts/processor.png')},
+  {name: 'Блок питания', screen: PartListScreen, icon: require('../assets/images/parts/power-suit.png')},
+  {name: 'Компьютерный блок', screen: PartListScreen, icon: require('../assets/images/parts/case.png')},
+  {name: 'Материнская плата', screen: PartListScreen, icon: require('../assets/images/parts/motherboard.png')}
 ];

@@ -43,7 +43,7 @@ class Toolbar extends React.Component {
           onIconClicked={
             activeRoute.name === routes[0].name ? showMenu : goBack
           }
-          overflowIconName="dots-vertical"
+          overflowIconName="cart"
           style={{ height: 56 }}
           actions={[
             { title: "About", show: "never", iconName: "information-outline" },

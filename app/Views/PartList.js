@@ -1,29 +1,34 @@
 import React from 'react';
 import {
-    ScrollView,
-    StyleSheet,
-    Text,
-    Button,
-    ImageBackground,
-} from 'react-native';
+  ScrollView,
+  StyleSheet,
+  Text,
+  Button,
+  ImageBackground, FlatList
+} from "react-native";
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { navigateTo } from '../Redux/actions';
 import PartItem from "../Component/PartItem";
 import { Divider } from "react-native-elements";
-const backgroundImage = require('../img/bg_travel.jpeg');
+// const backgroundImage = require('../img/bg_travel.jpeg');
 
 const PartList = ({ activeRoute, navigateTo }) => (
 
-      <ScrollView contentContainerStyle={styles.view}>
+      // <ScrollView contentContainerStyle={styles.view}>
+        <FlatList data={
+          [{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}]
+        }
+        renderItem={item =>
           <PartItem
             imgUrl="//content2.onliner.by/catalog/device/header/8ff65cc441bd44a55d85aff8ccb5bf95.jpeg"
             description="1 модуля, частота 3200 МГц, CL 16T, тайминги 16-18-18, напряжение 1.35 В"
             name='HyperX Predator 2x8GB DDR4 PC4-25600 HX432C16PB3K2/16'
             price={219.51}
           />
-          <Divider style={{ height: 2, backgroundColor: '#ee1c00' }} />
-      </ScrollView>
+        } />
+
+      // </ScrollView>
 
 );
 

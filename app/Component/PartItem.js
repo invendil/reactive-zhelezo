@@ -5,9 +5,10 @@ import {
   Button,
   ImageBackground, View, Image
 } from "react-native";
+import { Divider } from "react-native-elements";
 
 export default PartItem = ({ imgUrl, description, name, price }) => (
-
+  <View>
   <View style={styles.view}>
     <View style={{ flex: 1, padding: 12 }}>
       <Image
@@ -20,9 +21,11 @@ export default PartItem = ({ imgUrl, description, name, price }) => (
       <Text>{description}</Text>
     </View>
     <View style={{ flex: 0.5 }}>
-      <Text style={{ "font-weight": "bolder", fontSize: 20 }}>Цена</Text>
-      <Text>{price}</Text>
+      <Text style={{ fontWeight: "bold", fontSize: 17 }}>Цена</Text>
+      <Text style={{ fontWeight: "bold", fontSize: 17 }}>{price}</Text>
     </View>
+  </View>
+    <Divider style={{height: 3, backgroundColor: "#ee8615"}} />
   </View>
 );
 
@@ -36,7 +39,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",
-    height: 100
+    height: 100,
+    marginBottom: 13,
+    marginTop: 13
   },
   header1: {
     fontSize: 28,

@@ -6,7 +6,7 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity
+  TouchableOpacity, Image
 } from "react-native";
 import {
   bgDrawerHeader,
@@ -19,52 +19,54 @@ import {
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { navigateTo } from "../Redux/actions";
 
-const DrawerContent = ({ navigateTo, activeRoute, routes, closeDrawer }) => (
-  <ScrollView>
-    <View style={styles.header}>
-      <View style={styles.headerLogo}>
-        <Icon name="airplane-takeoff" size={50} color={drawerLogoColor} />
+const DrawerContent = ({ navigateTo, activeRoute, routes, closeDrawer }) => {
+  const getImagePath = (route) => `../assets/images/parts/${route.icon}.png`;
+  console.log(routes);
+
+  return (
+    <ScrollView>
+      <View style={styles.header}>
+        <View style={styles.headerLogo}>
+          <Icon name="airplane-takeoff" size={50} color={drawerLogoColor}/>
+        </View>
+        <View style={styles.subTitle}>
+          <Text style={styles.drawerTitle}>Travel App</Text>
+          <Text style={styles.drawerEmail}>pablodarde@gmail.com</Text>
+        </View>
       </View>
-      <View style={styles.subTitle}>
-        <Text style={styles.drawerTitle}>Travel App</Text>
-        <Text style={styles.drawerEmail}>pablodarde@gmail.com</Text>
-      </View>
-    </View>
-    {routes.map(route => (
-      <TouchableOpacity
-        key={route.screen}
-        onPress={() => {
-          closeDrawer();
-          navigateTo(route.name);
-        }}
-        style={
-          activeRoute.name === route.name
-            ? [styles.drawerItem, styles.activeDrawerItem]
-            : styles.drawerItem
-        }
-      >
-        {route.icon && (
-          <View style={styles.drawerItemLogo}>
-            <Icon
-              name={route.icon}
-              size={30}
-              color={activeRoute.name === route.name ? "#fff" : "#000"}
-            />
-          </View>
-        )}
-        <Text
+      {routes.map(route => (
+        <TouchableOpacity
+          key={route.name}
+          onPress={() => {
+            closeDrawer();
+            navigateTo(route.name);
+          }}
           style={
             activeRoute.name === route.name
-              ? { color: "#fff" }
-              : { color: "#000" }
+              ? [styles.drawerItem, styles.activeDrawerItem]
+              : styles.drawerItem
           }
         >
-          {route.name}
-        </Text>
-      </TouchableOpacity>
-    ))}
-  </ScrollView>
-);
+          <View>
+            <Image
+              source={route.icon}
+              style={{ width: 40, height: 40 }}
+            />
+          </View>
+          <Text
+            style={[
+              styles.fontCategory,
+              activeRoute.name === route.name
+                ? styles.fontCategorySelected : null
+            ]}
+          >
+            {route.name}
+          </Text>
+        </TouchableOpacity>
+      ))}
+    </ScrollView>
+  );
+};
 
 DrawerContent.propTypes = {
   activeRoute: PropTypes.shape({
@@ -97,6 +99,14 @@ const styles = StyleSheet.create({
   subTitle: {
     height: 56,
     paddingTop: 8
+  },
+  fontCategory: {
+    marginLeft: 10,
+    fontSize: 15,
+    color: "#000"
+  },
+  fontCategorySelected: {
+    color: "#fff"
   },
   drawerTitle: {
     color: drawerHeaderColor,
@@ -132,16 +142,16 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state, ownProps) => ({
   routes: state.routes.routes,
   activeRoute: state.routes.activeRoute,
-  closeDrawer: ownProps.closeDrawer,
+  closeDrawer: ownProps.closeDrawer
 });
 
 const mapDispatchToProps = dispatch => ({
   navigateTo: routeName => {
     dispatch(navigateTo(routeName));
-  },
+  }
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(DrawerContent);

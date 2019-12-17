@@ -2,6 +2,13 @@ export const NAVIGATE_TO = 'NAVIGATE_TO';
 export const GO_BACK = 'GO_BACK';
 export const SET_NAVIGATOR = 'SET_NAVIGATOR';
 export const SET_ACTIVE_ROUTE = 'SET_ACTIVE_ROUTE';
+export const ADD_TO_CART = 'ADD_TO_CART';
+
+export const addToCart = (itemType, data) => ({
+  type: ADD_TO_CART,
+  data,
+  itemType
+});
 
 export const navigateTo = routeName => ({
   type: NAVIGATE_TO,

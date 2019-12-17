@@ -1,12 +1,13 @@
-import { NavigationActions } from 'react-navigation';
-import * as Type from '../actions';
-import routesMap from '../../Navigation/routes';
+import { NavigationActions } from "react-navigation";
+import * as Type from "../actions";
+import routesMap from "../../navigation/routes";
 
 const routeState = {
   activeRoute: routesMap[0],
-  routes : routesMap,
+  cartItems: new Map(),
+  routes: routesMap,
   navigator: null,
-  activeRouteKey: routesMap[0].name,
+  activeRouteKey: routesMap[0].name
 };
 
 const routes = (state = routeState, action) => {
@@ -18,18 +19,25 @@ const routes = (state = routeState, action) => {
     case Type.SET_NAVIGATOR:
       return {
         ...state,
-        navigator: action.navigator,
+        navigator: action.navigator
       };
 
     case Type.SET_ACTIVE_ROUTE:
       return {
         ...state,
-        activeRoute: state.routes.find(route => route.name === action.activeRouteName),
+        activeRoute: state.routes.find(route => route.name === action.activeRouteName)
       };
 
     case Type.GO_BACK:
       state.navigator.dispatch(NavigationActions.back());
       return state;
+
+    case Type.ADD_TO_CART: {
+      state.cartItems[action.itemType] = action.data;
+
+      return state;
+    }
+
 
     default:
       return state;

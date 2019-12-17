@@ -3,7 +3,7 @@ import { View, StyleSheet, Text } from "react-native";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { goBack, navigateTo } from "../../Redux/actions";
+import { goBack, navigateTo } from "../../redux/actions";
 import { bgHeader } from "../../global.styles";
 
 class Toolbar extends React.Component {
@@ -35,14 +35,10 @@ class Toolbar extends React.Component {
     return (
       <View style={styles.header}>
         <Icon.ToolbarAndroid
-          navIconName={
-            activeRoute.name === routes[0].name ? "menu" : "arrow-left"
-          }
+          navIconName="menu"
           titleColor="#fff"
           title={activeRoute.name}
-          onIconClicked={
-            activeRoute.name === routes[0].name ? showMenu : goBack
-          }
+          onIconClicked={showMenu}
           overflowIconName="cart"
           style={{ height: 56 }}
           actions={[

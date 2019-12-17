@@ -9,11 +9,11 @@ import {
 } from 'react-native';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from './app/Redux/reducers';
-import { setNavigator, setActiveRoute } from "./app/Redux/actions";
-import DrawerContent from './app/Navigation/DrawerContent';
-import Toolbar from './app/Navigation/Toolbar';
-import AppNavigation from './app/Navigation/AppNavigation';
+import reducer from './app/redux/reducers';
+import { setNavigator, setActiveRoute } from "./app/redux/actions";
+import DrawerContent from './app/navigation/DrawerContent';
+import Toolbar from './app/navigation/Toolbar';
+import AppNavigation from './app/navigation/AppNavigation';
 import { bgStatusBar, bgDrawer } from './app/global.styles';
 
 let store = createStore(reducer);
@@ -48,9 +48,12 @@ export default class App extends Component {
     }
     const route = navigationState.routes[navigationState.index];
     // dive into nested navigators
+
     if (route.routes) {
-      return getActiveRouteName(route);
+      console.log("get active routes", route.routes)
+      return this.getActiveRouteName(route);
     }
+    console.log("get routname", route.routeName)
     return route.routeName;
   };
 

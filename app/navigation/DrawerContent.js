@@ -17,11 +17,9 @@ import {
   drawerHeaderColor
 } from "../global.styles";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { navigateTo } from "../Redux/actions";
+import { navigateTo } from "../redux/actions";
 
 const DrawerContent = ({ navigateTo, activeRoute, routes, closeDrawer }) => {
-  const getImagePath = (route) => `../assets/images/parts/${route.icon}.png`;
-  console.log(routes);
 
   return (
     <ScrollView>
@@ -50,7 +48,7 @@ const DrawerContent = ({ navigateTo, activeRoute, routes, closeDrawer }) => {
           <View>
             <Image
               source={route.icon}
-              style={{ width: 40, height: 40 }}
+              style={{ width: 50, height: 50 }}
             />
           </View>
           <Text
@@ -102,7 +100,7 @@ const styles = StyleSheet.create({
   },
   fontCategory: {
     marginLeft: 10,
-    fontSize: 15,
+    fontSize: 20,
     color: "#000"
   },
   fontCategorySelected: {
@@ -129,7 +127,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: bgDrawerInactiveItem,
     color: drawerInactiveItemColor,
-    height: 50,
+    height: 70,
     paddingLeft: 16,
     borderBottomWidth: 2,
     borderBottomColor: "#fff"

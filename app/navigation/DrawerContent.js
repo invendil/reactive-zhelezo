@@ -66,16 +66,16 @@ const DrawerContent = ({ navigateTo, activeRoute, routes, closeDrawer }) => {
   );
 };
 
-DrawerContent.propTypes = {
-  activeRoute: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    screen: PropTypes.any.isRequired,
-    icon: PropTypes.string.isRequired
-  }).isRequired,
-  routes: PropTypes.arrayOf(PropTypes.object).isRequired,
-  navigateTo: PropTypes.func.isRequired,
-  closeDrawer: PropTypes.func.isRequired
-};
+// DrawerContent.propTypes = {
+//   activeRoute: PropTypes.shape({
+//     name: PropTypes.string.isRequired,
+//     screen: PropTypes.any.isRequired,
+//     icon: PropTypes.string.isRequired
+//   }).isRequired,
+//   routes: PropTypes.arrayOf(PropTypes.object).isRequired,
+//   navigateTo: PropTypes.func.isRequired,
+//   closeDrawer: PropTypes.func.isRequired
+// };
 
 const styles = StyleSheet.create({
   header: {

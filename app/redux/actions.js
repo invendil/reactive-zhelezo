@@ -3,6 +3,12 @@ export const GO_BACK = 'GO_BACK';
 export const SET_NAVIGATOR = 'SET_NAVIGATOR';
 export const SET_ACTIVE_ROUTE = 'SET_ACTIVE_ROUTE';
 export const ADD_TO_CART = 'ADD_TO_CART';
+export const REMOVE_CART_ITEM = 'REMOVE_CART_ITEM';
+
+export const removeCartItem = (itemType) => ({
+  type: REMOVE_CART_ITEM,
+  itemType
+});
 
 export const addToCart = (itemType, data) => ({
   type: ADD_TO_CART,

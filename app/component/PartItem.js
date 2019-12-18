@@ -7,18 +7,23 @@ import {
   View,
   Image, TouchableOpacity, TouchableWithoutFeedback
 } from "react-native";
-import { Divider } from "react-native-elements";
+import { Button, Divider } from "react-native-elements";
+import Icon from "react-native-vector-icons/FontAwesome";
 
-export default function PartItem({ data, withDivider, onPress }) {
+export default function PartItem({ data, withDivider, onPress, onRemove }) {
 
   const _onPress = () => {
     onPress(data);
   };
 
+  const _onRemove = () => {
+    onRemove(data.typeName);
+  };
+
   return (
     <TouchableWithoutFeedback
       key={data.index}
-      onPress={_onPress}
+      onPress={onPress ? _onPress : null}
     >
       <View>
         <View style={styles.view}>
@@ -33,6 +38,15 @@ export default function PartItem({ data, withDivider, onPress }) {
             <Text>{data.description}</Text>
           </View>
           <View style={{ flex: 0.5, alignItems: "center" }}>
+            {onRemove &&
+            <Button
+              buttonStyle={styles.closeButton}
+              title="X"
+              color="#1E6738"
+              accessibilityLabel="X"
+              onPress={_onRemove}
+            />
+            }
             <Text style={{ ...systemWeights.bold, color: iOSColors.red, fontSize: 17 }}>{data.price}</Text>
             <Text style={{ ...systemWeights.semibold, fontSize: 15 }}>Руб</Text>
           </View>
@@ -49,6 +63,14 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
     backgroundColor: "#ECEFF1"
   },
+
+  closeButton: {
+    height: 35,
+    width: 35,
+    backgroundColor: "#ff0007",
+    marginBottom: 13
+  },
+
   view: {
     flexDirection: "row",
     justifyContent: "flex-start",

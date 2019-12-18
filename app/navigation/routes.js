@@ -1,7 +1,5 @@
 import PartListScreen from '../views/PartList';
-import BookingScreen from '../views/Booking';
-import AboutScreen from '../views/About';
-import CreditsScreen from '../views/Credits';
+import CartListScreen from "../views/CartList";
 
 /* Icon key is optional. It must be of type string and its value should match a valid provider icon
   name.
@@ -15,4 +13,5 @@ export default [
   {fetchName: 'processor', name: 'Процессор', screen: PartListScreen, icon: require('../assets/images/parts/processor.png')},
   {fetchName: 'storage', name: 'Жесткий диск', screen: PartListScreen, icon: require('../assets/images/parts/storage.png')},
   {fetchName: 'videoCard', name: 'Видео карта', screen: PartListScreen, icon: require('../assets/images/parts/video-card.png')},
+  {name: 'Корзина', screen: CartListScreen},
 ];

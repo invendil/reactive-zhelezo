@@ -4,7 +4,7 @@ import routesMap from "../../navigation/routes";
 
 const routeState = {
   activeRoute: routesMap[0],
-  cartItems: new Map(),
+  cartItems: {},
   routes: routesMap,
   navigator: null,
   activeRouteKey: routesMap[0].name
@@ -34,6 +34,16 @@ const routes = (state = routeState, action) => {
 
     case Type.ADD_TO_CART: {
       state.cartItems[action.itemType] = action.data;
+
+      return state;
+    }
+
+    case Type.REMOVE_CART_ITEM: {
+      if (action.itemType === "clear") {
+        state.cartItems = {};
+      } else {
+        delete state.cartItems[action.itemType];
+      }
 
       return state;
     }

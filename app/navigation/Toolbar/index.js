@@ -23,7 +23,7 @@ class Toolbar extends React.Component {
     const { navigateTo } = this.props;
 
     if (position === 0) {
-      navigateTo("About");
+      navigateTo("Корзина");
     } else if (position === 1) {
       navigateTo("Credits");
     }
@@ -39,11 +39,10 @@ class Toolbar extends React.Component {
           titleColor="#fff"
           title={activeRoute.name}
           onIconClicked={showMenu}
-          overflowIconName="cart"
+          overflowIconName="dots-vertical"
           style={{ height: 56 }}
           actions={[
-            { title: "About", show: "never", iconName: "information-outline" },
-            { title: "Credits", show: "never", iconName: "account-circle" }
+            { title: "Корзина", show: "never", iconName: "cart" }
           ]}
           onActionSelected={this.onActionSelected}
         />

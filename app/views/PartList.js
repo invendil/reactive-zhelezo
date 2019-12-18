@@ -63,7 +63,7 @@ class PartList extends Component {
         <FlatList
           data={data}
           renderItem={ ({item}) => {
-            // console.log(`data in item[${item.index}]: `,item ? item : 0);
+            console.log("Cart render item: ", item);
             return(
             <PartItem
               data={item}

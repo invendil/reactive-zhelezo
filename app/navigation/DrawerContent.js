@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import {
   ScrollView,
   StyleSheet,
@@ -16,7 +15,6 @@ import {
   bgDrawerActiveItem,
   drawerHeaderColor
 } from "../global.styles";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { navigateTo } from "../redux/actions";
 
 const DrawerContent = ({ navigateTo, activeRoute, routes, closeDrawer }) => {
@@ -24,65 +22,54 @@ const DrawerContent = ({ navigateTo, activeRoute, routes, closeDrawer }) => {
   return (
     <ScrollView>
       <View style={styles.header}>
-        <View style={styles.headerLogo}>
-          <Icon name="airplane-takeoff" size={50} color={drawerLogoColor}/>
-        </View>
-        <View style={styles.subTitle}>
-          <Text style={styles.drawerTitle}>Travel App</Text>
-          <Text style={styles.drawerEmail}>pablodarde@gmail.com</Text>
-        </View>
+        <Image
+          source={require("../assets/images/logo.png")}
+          style={{width:"85%", height: "85%",top:"20%" }}
+        />
       </View>
-      {routes.map(route => (
-        <TouchableOpacity
-          key={route.name}
-          onPress={() => {
-            closeDrawer();
-            navigateTo(route.name);
-          }}
-          style={
-            activeRoute.name === route.name
-              ? [styles.drawerItem, styles.activeDrawerItem]
-              : styles.drawerItem
-          }
-        >
-          <View>
-            <Image
-              source={route.icon}
-              style={{ width: 50, height: 50 }}
-            />
-          </View>
-          <Text
-            style={[
-              styles.fontCategory,
+      {routes.map(route => {
+        if (route.icon) {
+          return <TouchableOpacity
+            key={route.name}
+            onPress={() => {
+              closeDrawer();
+              navigateTo(route.name);
+            }}
+            style={
               activeRoute.name === route.name
-                ? styles.fontCategorySelected : null
-            ]}
+                ? [styles.drawerItem, styles.activeDrawerItem]
+                : styles.drawerItem
+            }
           >
-            {route.name}
-          </Text>
-        </TouchableOpacity>
-      ))}
+            <View>
+              <Image
+                source={route.icon}
+                style={{ width: 50, height: 50 }}
+              />
+            </View>
+            <Text
+              style={[
+                styles.fontCategory,
+                activeRoute.name === route.name
+                  ? styles.fontCategorySelected : null
+              ]}
+            >
+              {route.name}
+            </Text>
+          </TouchableOpacity>;
+        } else {
+          return null;
+        }
+      })}
     </ScrollView>
   );
 };
 
-// DrawerContent.propTypes = {
-//   activeRoute: PropTypes.shape({
-//     name: PropTypes.string.isRequired,
-//     screen: PropTypes.any.isRequired,
-//     icon: PropTypes.string.isRequired
-//   }).isRequired,
-//   routes: PropTypes.arrayOf(PropTypes.object).isRequired,
-//   navigateTo: PropTypes.func.isRequired,
-//   closeDrawer: PropTypes.func.isRequired
-// };
-
 const styles = StyleSheet.create({
   header: {
     flexDirection: "column",
-    paddingTop: 40, // 24dp (Space for the translucent StatusBar) plus 16dp Android Header paddingTop
-    paddingLeft: 16,
     height: 170,
+    alignItems: "center",
     backgroundColor: bgDrawerHeader
   },
   headerLogo: {

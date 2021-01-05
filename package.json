@@ -6,7 +6,7 @@
     "start": "npx react-native run-android"
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "global": "^4.3.2",
     "prettier": "^1.15.3",
     "prop-types": "^15.6.2",
